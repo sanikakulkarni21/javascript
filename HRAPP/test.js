@@ -1,8 +1,8 @@
 import Employee from './employee.js';
 import SalesEmployee from './salesEmployee.js';
 import SalesManager from './salesManager.js';
-//import IAppraisable from './Interfaces/IApprisable.js';
-//import ITrainer from './Interfaces/ITrainer.js';
+import IAppraisable from './Interfaces/IAppraisable.js';
+import ITrainer from './Interfaces/ITrainer.js';
 
 /*var emptype= typeof Employee;
 console.log(emptype);
@@ -33,6 +33,15 @@ console.log(salesManager);
 console.log(`Sales Manager pay is :${salesManager.computePay()}`);
 
 
+Object.assign(SalesManager.prototype, IAppraisable.prototype);
+Object.assign(SalesManager.prototype, ITrainer.prototype);
 
+const staff =[
+    new SalesEmployee(1, "sejal",60000,3000,5000,7000),
+    new SalesManager(2, "soham",80000,4000,6000,10000,15000)
+];
 
-
+for (const trainer of staff){
+    console.log(`Employee ID: ${trainer.id}, Name: ${trainer.name}, Pay: ${trainer.computePay()}`);
+    trainer.conductTraining();
+}
